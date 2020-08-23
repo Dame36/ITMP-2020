@@ -4,34 +4,86 @@
 	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
 	<link rel=stylesheet href="../src/reset.css">
 	<link rel=stylesheet href="lab.css">
+	<link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body class="paper">
-	<div id="app">
-		<input type="number" v-model="n">
+	<div id="app" class="bg">
+		<h3>แม่สูตรคูณ: <input type="number" v-model="n"></h3>
+		<h3>จำนวนแถว: <input type="number" v-model="row"></h3>
 		<div class="space"></div>
-		<h3>สูตรคูณแม่{{n}}</h3>
-		<h4>{{n}} x 1 = {{n*1}}</h4>
-		<h4>{{n}} x 2 = {{n*2}}</h4>
-		<h4>{{n}} x 3 = {{n*3}}</h4>
-		<h4>{{n}} x 4 = {{n*4}}</h4>
-		<h4>{{n}} x 5 = {{n*5}}</h4>
-		<h4>{{n}} x 6 = {{n*6}}</h4>
-		<h4>{{n}} x 7 = {{n*7}}</h4>
-		<h4>{{n}} x 8 = {{n*8}}</h4>
-		<h4>{{n}} x 9 = {{n*9}}</h4>
-		<h4>{{n}} x 10 = {{n*10}}</h4>
-		<h4>{{n}} x 11 = {{n*11}}</h4>
-		<h4>{{n}} x 12 = {{n*12}}</h4>
+		<h3 class="title1">สูตรคูณแม่ {{n}}</h3>
+		<h5>สูตรคูณก่อนหน้า -> แม่ {{before_n}}</h5>
+		<div class="mul"><h4 v-for="i in r">{{n}} x {{i}} = {{x(i)}}</h4></div>
+		<div><h3>ผลรวม = {{summ(row)}}</h3></div>
+		
 	</div>
 
 	<script>
+		let ans = 0
 		let app = new Vue({
-			el: '#app',
-			data: {
-				n: 2
+			el:'#app',
+			data:{
+				n:2,
+				before_n:1,
+				row:12
+			},
+			methods: {
+				x: function(row){
+					return this.n*row
+				},
+				summ: function(row){
+					ans = 0
+					for (var i = 1; i <= row; i++) {
+						ans += (this.n * i)
+					}
+					return ans
+				}
+			},
+			computed: {
+				r: function(){
+					return parseInt(this.row)
+				},
+				x2: function(){
+					return this.n*2
+				},
+				x3: function(){
+					return this.n*3	
+				},
+				x4: function(){
+					return this.n*4
+				},
+				x5: function(){
+					return this.n*5
+				},
+				x6: function(){
+					return this.n*6
+				},
+				x7: function(){
+					return this.n*7
+				},
+				x8: function(){
+					return this.n*8
+				},
+				x9: function(){
+					return this.n*9
+				},
+				x10: function(){
+					return this.n*10
+				},
+				x11: function(){
+					return this.n*11
+				},
+				x12: function(){
+					return this.n*12
+				}
+			},
+			watch: {
+				n: function(a,b){
+					this.before_n = b
+				}
 			}
-		})
+		});
 	</script>
 </body>
 </html>
