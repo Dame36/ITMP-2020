@@ -11,7 +11,7 @@
 	<div id="canvas">
 		<section id="canvas_header">
 			<div>
-				คะแนนของคุณ {{score}} คะแนน
+				เก็บผลไม้ตามชนิดได้ {{score}} คะแนน!
 			</div>
 		</section>
 		<section id="canvas_main" :data-play="play">
@@ -45,7 +45,7 @@
 
 		let fruitCount = 3
 		let isRightArrow = 1
-		let speed = 1000
+		let speed = 500
 		let app = new Vue({
 			el: '#canvas',
 			data: {
@@ -107,11 +107,11 @@
 						
 					}
 					if (rand(1, 10) % 3 == 1) {
-						this.fruits.push({ id: fruitCount, type: 'red', pst: 1, run: true, step: 1 })
-						fruitCount++
+						this.fruits.push({ id: fruitCount, type: "red", pst: 1, run: true, step: 1 })
+						fruitCount+=10
 					} else if (rand(1, 10) % 3 == 0) {
-						this.fruits.push({ id: fruitCount, type: 'yellow', pst: 1, run: true, step: 1 })
-						fruitCount++
+						this.fruits.push({ id: fruitCount, type: "yellow", pst: 1, run: true, step: 1 })
+						fruitCount+=10
 					}
 					console.log(this.speed)
 				}
